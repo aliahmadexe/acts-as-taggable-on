@@ -2,7 +2,7 @@ module ActsAsTaggableOn::Taggable
   module Core
     def self.included(base)
       base.extend ActsAsTaggableOn::Taggable::Core::ClassMethods
-
+      base.include ActiveModel::Dirty
       base.class_eval do
         attr_writer :custom_contexts
         after_save :save_tags
